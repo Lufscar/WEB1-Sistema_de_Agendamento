@@ -1,17 +1,19 @@
 package br.ufscar.dc.dsw.controller;
 
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import br.ufscar.dc.dsw.domain.Clientes;
-import br.ufscar.dc.dsw.service.spec.IClientesService;
+import br.ufscar.dc.dsw.domain.*;
+import br.ufscar.dc.dsw.service.spec.*;
 
 @Controller
 @RequestMapping("/clientes")
@@ -19,6 +21,9 @@ public class ClientesController {
 
 	@Autowired
 	private IClientesService service;
+
+	@Autowired
+	private IConsultasService consultaService;
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Clientes cliente) {
@@ -70,5 +75,10 @@ public class ClientesController {
 			model.addAttribute("sucess", "Cliente excluído com sucesso.");
 		}
 		return listar(model);
+	}
+
+	@ModelAttribute("consulta")
+	public List<Consultas> listaConsultas() {
+		return consultaService.buscarTodos();
 	}
 }
