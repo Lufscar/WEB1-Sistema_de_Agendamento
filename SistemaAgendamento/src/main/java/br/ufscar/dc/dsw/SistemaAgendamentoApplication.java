@@ -25,6 +25,9 @@ public class SistemaAgendamentoApplication {
 			c1.setNome("Cliente Generico");
 			c1.setEmail("cli@cli.com");
 			c1.setSenha("1234");
+			c1.setSexo("n");
+			c1.setTelefone("11912345698");
+			c1.setNascimento("11/11/90");
 			clienteDAO.save(c1);
 
 			Clientes c2 = new Clientes();
@@ -32,6 +35,9 @@ public class SistemaAgendamentoApplication {
 			c2.setNome("Luciana Souza");
 			c2.setEmail("luciana.souza@estudante.ufscar.br");
 			c2.setSenha("1234");
+			c2.setSexo("f");
+			c2.setTelefone("11912345698");
+			c2.setNascimento("11/11/90");
 			clienteDAO.save(c2);
 
 			Clientes c3 = new Clientes();
@@ -39,6 +45,9 @@ public class SistemaAgendamentoApplication {
 			c3.setNome("Jean Araujo");
 			c3.setEmail("jean.araujo@estudante.ufscar.br");
 			c3.setSenha("1234");
+			c3.setSexo("m");
+			c3.setTelefone("11912345698");
+			c3.setNascimento("11/11/90");
 			clienteDAO.save(c3);
 
 			Clientes c4 = new Clientes();
@@ -46,6 +55,9 @@ public class SistemaAgendamentoApplication {
 			c4.setNome("Anderson Henrique");
 			c4.setEmail("agiacomini@estudante.ufscar.br");
 			c4.setSenha("1234");
+			c4.setSexo("m");
+			c4.setTelefone("11912345698");
+			c4.setNascimento("11/11/90");
 			clienteDAO.save(c4);
 
 			Profissionais p1 = new Profissionais();
@@ -53,6 +65,8 @@ public class SistemaAgendamentoApplication {
 			p1.setNome("Profissional Generico");
 			p1.setEmail("pro@pro.com");
 			p1.setSenha("1234");
+			p1.setArea("medicina");
+			p1.setEspecialidade("cardiologista");
 			profissionalDAO.save(p1);
 
 			Profissionais p2 = new Profissionais();
@@ -60,6 +74,8 @@ public class SistemaAgendamentoApplication {
 			p2.setNome("Luciana Souza");
 			p2.setEmail("luciana.souza@estudante.ufscar.br");
 			p2.setSenha("1234");
+			p2.setArea("medicina");
+			p2.setEspecialidade("psicologia");
 			profissionalDAO.save(p2);
 
 			Profissionais p3 = new Profissionais();
@@ -67,6 +83,8 @@ public class SistemaAgendamentoApplication {
 			p3.setNome("Jean Araujo");
 			p3.setEmail("jean.araujo@estudante.ufscar.br");
 			p3.setSenha("1234");
+			p3.setArea("engenharia");
+			p3.setEspecialidade("elétrica");
 			profissionalDAO.save(p3);
 
 			Profissionais p4 = new Profissionais();
@@ -74,6 +92,8 @@ public class SistemaAgendamentoApplication {
 			p4.setNome("Anderson Henrique");
 			p4.setEmail("agiacomini@estudante.ufscar.br");
 			p4.setSenha("1234");
+			p4.setArea("engenharia");
+			p4.setEspecialidade("mecânica");
 			profissionalDAO.save(p4);
 
 			Consultas a1 = new Consultas();
