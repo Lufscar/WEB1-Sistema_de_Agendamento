@@ -2,7 +2,9 @@ package br.ufscar.dc.dsw.service.spec;
 
 import java.util.List;
 import br.ufscar.dc.dsw.domain.Profissionais;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface IProfissionaisService {
 	Profissionais buscarPorId(Long id);
 

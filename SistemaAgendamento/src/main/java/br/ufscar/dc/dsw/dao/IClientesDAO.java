@@ -7,7 +7,7 @@ import br.ufscar.dc.dsw.domain.Clientes;
 public interface IClientesDAO extends CrudRepository<Clientes, Long> {
 	Clientes findById(long id);
 
-	Clientes findByCPF(String CPF);
+	Clientes findBycpf(String cpf);
 
 	List<Clientes> findAll();
 

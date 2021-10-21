@@ -7,7 +7,7 @@ import br.ufscar.dc.dsw.domain.Profissionais;
 public interface IProfissionaisDAO extends CrudRepository<Profissionais, Long> {
 	Profissionais findById(long id);
 
-	Profissionais findByCPF(String CPF);
+	Profissionais findBycpf(String CPF);
 
 	List<Profissionais> findAll();
 

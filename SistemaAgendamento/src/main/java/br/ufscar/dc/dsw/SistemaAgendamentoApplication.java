@@ -49,7 +49,7 @@ public class SistemaAgendamentoApplication {
 			clienteDAO.save(c4);
 
 			Profissionais p1 = new Profissionais();
-			p1.setCpf("00000000000");
+			p1.setCpf("11111111111");
 			p1.setNome("Profissional Generico");
 			p1.setEmail("pro@pro.com");
 			p1.setSenha("1234");

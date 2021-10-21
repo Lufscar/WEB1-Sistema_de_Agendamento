@@ -27,9 +27,9 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	private String nome;
 
 	@NotBlank
-	@UniqueCPF(message = "{Unique.CPF}")
+	//@UniqueCPF(message = "{Unique.CPF}")
 	@Size(min = 11, max = 11, message = "{Size.CPF}")
-	@Column(nullable = false, unique = true, length = 11)
+	@Column(nullable = false, length = 11)
 	private String cpf;
 
 	@NotBlank
@@ -41,9 +41,6 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	@Size(max = 64)
 	@Column(nullable = false, length = 64)
 	private String senha;
-
-	@OneToMany(mappedBy = "pessoa")
-	private List<Consultas> consulta;
 
 	public ID getId() {
 		return id;
@@ -83,14 +80,6 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public List<Consultas> getConsultas() {
-		return consulta;
-	}
-
-	public void setConsultas(List<Consultas> consulta) {
-		this.consulta = consulta;
 	}
 
 	@Override
