@@ -42,7 +42,7 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	@Column(nullable = false, length = 64)
 	private String senha;
 
-	@OneToMany(mappedBy = "profissional")
+	@OneToMany(mappedBy = "pessoa")
 	private List<Consultas> consulta;
 
 	public ID getId() {

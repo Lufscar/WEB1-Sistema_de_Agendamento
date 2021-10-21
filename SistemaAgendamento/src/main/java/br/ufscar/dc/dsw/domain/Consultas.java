@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,15 +19,19 @@ public class Consultas {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "{NotBlank.consulta.data_hora}")
+	@NotBlank
 	@Size(max = 16)
 	@Column(nullable = false, length = 16)
 	private String data_hora;
 
-	@OneToMany
+	@NotBlank
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Clientes cliente;
 
-	@OneToMany
+	@NotBlank
+	@ManyToOne
+	@JoinColumn(name = "profissional_id")
 	private Profissionais profissional;
 	
 	public String getDataHora() {
