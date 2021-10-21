@@ -28,5 +28,29 @@ public class Consultas {
 
 	@OneToMany
 	private Profissionais profissional;
+	
+	public String getDataHora() {
+		return data_hora;
+	}
+
+	public void setDataHora(String data_hora) {
+		this.data_hora = data_hora;
+	}
+	
+	public Clientes getCliente() {
+		return cliente;
+	}
+	
+	public void setCliente(Clientes cliente) {
+		this.cliente = cliente;
+	}
+	
+	public Profissionais getProfissional() {
+		return profissional;
+	}
+	
+	public void setProfissional(Profissionais profissional) {
+		this.profissional = profissional;
+	}
 
 }
