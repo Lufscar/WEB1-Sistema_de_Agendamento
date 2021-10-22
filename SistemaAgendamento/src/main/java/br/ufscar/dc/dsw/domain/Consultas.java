@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,12 +25,12 @@ public class Consultas {
 	@Column(nullable = false, length = 16)
 	private String data_hora;
 
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Clientes cliente;
 
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "profissional_id")
 	private Profissionais profissional;
