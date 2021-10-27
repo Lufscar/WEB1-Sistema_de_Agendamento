@@ -32,7 +32,7 @@ public class ProfissionaisController {
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("profissional", service.buscarTodos());
+		model.addAttribute("profissionais", service.buscarTodos());
 		return "profissional/lista";
 	}
 

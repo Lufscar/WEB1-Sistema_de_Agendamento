@@ -27,7 +27,7 @@ public class SistemaAgendamentoApplication {
 			c1.setSenha("1234");
 			c1.setSexo("n");
 			c1.setTelefone("11912345698");
-			c1.setNascimento("11/11/90");
+			c1.setNascimento("11/11/1990");
 			clienteDAO.save(c1);
 
 			Clientes c2 = new Clientes();
@@ -37,7 +37,7 @@ public class SistemaAgendamentoApplication {
 			c2.setSenha("1234");
 			c2.setSexo("f");
 			c2.setTelefone("11912345698");
-			c2.setNascimento("11/11/90");
+			c2.setNascimento("11/11/1990");
 			clienteDAO.save(c2);
 
 			Clientes c3 = new Clientes();
@@ -47,7 +47,7 @@ public class SistemaAgendamentoApplication {
 			c3.setSenha("1234");
 			c3.setSexo("m");
 			c3.setTelefone("11912345698");
-			c3.setNascimento("11/11/90");
+			c3.setNascimento("11/11/1990");
 			clienteDAO.save(c3);
 
 			Clientes c4 = new Clientes();
@@ -57,7 +57,7 @@ public class SistemaAgendamentoApplication {
 			c4.setSenha("1234");
 			c4.setSexo("m");
 			c4.setTelefone("11912345698");
-			c4.setNascimento("11/11/90");
+			c4.setNascimento("11/11/1990");
 			clienteDAO.save(c4);
 
 			Profissionais p1 = new Profissionais();
