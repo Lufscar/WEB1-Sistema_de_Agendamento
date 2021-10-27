@@ -16,7 +16,7 @@
 			</div>
 			<a class="btn btn-primary btn-md" th:href="@{/consultas/listar}"
 				role="button"> <span class="oi oi-spreadsheet" title="Cadastro"
-				aria-hidden="true"></span> <span>Listar Consultas</span>
+				aria-hidden="true"></span> <span th:text="#{consulta.listar.label}"></span>
 			</a>
 		</nav>
 
@@ -30,8 +30,8 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="nome">Data e Hora</label> 
-						<input type="text" class="form-control" id="data_hora" placeholder="Data e Hora"
+						<label th:text="#{consulta.dataehora.label}" for="nome"></label> 
+						<input type="text" class="form-control" id="data_hora" th:placeholder="#{consulta.dataehora.label}"
 							data-mask="00/00/0000 00:00" data-mask-reverse="true" th:field="*{data_hora}"
 							th:classappend="${#fields.hasErrors('data_hora')} ? is-invalid" />
 						
