@@ -23,8 +23,8 @@ public class SistemaAgendamentoApplication {
 			
 			Admin ad1 = new Admin();
 			ad1.setCpf("12332112344");
-			ad1.setNome("Cliente Generico");
-			ad1.setEmail("cli@cli.com");
+			ad1.setNome("Administrador");
+			ad1.setEmail("adm@adm.com");
 			ad1.setSenha(encoder.encode("1234"));
 			ad1.setRole("ADMIN");
 			adminDAO.save(ad1);
