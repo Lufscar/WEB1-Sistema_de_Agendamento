@@ -20,17 +20,17 @@ public class Consultas {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "{NotBlank.consulta.data_hora}")
 	@Size(max = 16)
 	@Column(nullable = false, length = 16)
 	private String data_hora;
 
-	@NotNull
+	@NotNull(message = "{NotNull.consulta.cliente}")
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Clientes cliente;
 
-	@NotNull
+	@NotNull(message = "{NotNull.consulta.profissional}")
 	@ManyToOne
 	@JoinColumn(name = "profissional_id")
 	private Profissionais profissional;

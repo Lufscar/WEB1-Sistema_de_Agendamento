@@ -21,26 +21,30 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private ID id;
 
-	@NotBlank
+	@NotBlank(message = "{NotBlank.pessoa.nome}")
 	@Size(max = 128)
 	@Column(nullable = false, length = 128)
 	private String nome;
 
-	@NotBlank
-	//@UniqueCPF(message = "{Unique.CPF}")
+	@NotBlank(message = "{NotBlank.pessoa.cpf}")
+	@UniqueCPF(message = "{Unique.CPF}")
 	@Size(min = 11, max = 11, message = "{Size.CPF}")
 	@Column(nullable = false, length = 11)
 	private String cpf;
 
-	@NotBlank
+	@NotBlank(message = "{NotBlank.pessoa.email}")
 	@Size(max = 128)
 	@Column(nullable = false, length = 128)
 	private String email;
 
-	@NotBlank
+	@NotBlank(message = "{NotBlank.pessoa.senha}")
 	@Size(max = 64)
 	@Column(nullable = false, length = 64)
 	private String senha;
+	
+    @NotBlank(message = "{NotBlank.pessoa.role}")
+    @Column(nullable = false, length = 10)
+    private String role;
 
 	public ID getId() {
 		return id;
@@ -82,6 +86,14 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 		this.nome = nome;
 	}
 
+	public String getRole() {
+		return role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role == "ADMIN" ? "ADMIN" : "USER";
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
