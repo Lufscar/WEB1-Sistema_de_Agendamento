@@ -98,6 +98,10 @@ public class SistemaAgendamentoApplication {
 			p3.setNome("Jean Araujo");
 			p3.setEmail("jean.araujo@estudante.ufscar.br");
 			p3.setSenha(encoder.encode("1234"));
+			p3.setArea("computacao");
+			p3.setEspecialidade("engenharia de dados");
+			p3.setRole("ROLE_PROFISSIONAL");
+			profissionalDAO.save(p3);
 
 			Profissionais p4 = new Profissionais();
 			p4.setCpf("93344455566");
