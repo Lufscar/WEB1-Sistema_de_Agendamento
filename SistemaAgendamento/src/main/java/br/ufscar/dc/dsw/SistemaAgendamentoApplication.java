@@ -113,7 +113,6 @@ public class SistemaAgendamentoApplication {
 			p4.setRole("ROLE_PROFISSIONAL");
 			profissionalDAO.save(p4);
 
-			/*
 			Consultas a1 = new Consultas();
 			a1.setDataHora("10/02/2022 14:00");
 			a1.setCliente(c1);
@@ -131,7 +130,6 @@ public class SistemaAgendamentoApplication {
 			a3.setCliente(c3);
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
-*/ 
 		};
 	}
 }
