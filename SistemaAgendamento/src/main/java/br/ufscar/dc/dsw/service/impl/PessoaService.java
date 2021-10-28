@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufscar.dc.dsw.dao.IAdminDAO;
-import br.ufscar.dc.dsw.domain.Admin;
-import br.ufscar.dc.dsw.service.spec.IAdminService;
+import br.ufscar.dc.dsw.dao.IPessoaDAO;
+import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.service.spec.IPessoaService;
 
 @Service
 @Transactional(readOnly = false)
-public class AdminService implements IAdminService {
+public class PessoaService implements IPessoaService {
 
 	@Autowired
-	IAdminDAO dao;
+	IPessoaDAO dao;
 
-	public void salvar(Admin admin) {
-		dao.save(admin);
+	public void salvar(Pessoa pessoa) {
+		dao.save(pessoa);
 	}
 
 	public void excluir(Long id) {
@@ -26,12 +26,12 @@ public class AdminService implements IAdminService {
 	}
 
 	@Transactional(readOnly = true)
-	public Admin buscarPorId(Long id) {
+	public Pessoa buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
 
 	@Transactional(readOnly = true)
-	public List<Admin> buscarTodos() {
+	public List<Pessoa> buscarTodos() {
 		return dao.findAll();
 	}
 }

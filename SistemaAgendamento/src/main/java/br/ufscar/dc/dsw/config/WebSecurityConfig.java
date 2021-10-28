@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import br.ufscar.dc.dsw.security.AdminDetailsServiceImpl;
+import br.ufscar.dc.dsw.security.PessoaDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -16,7 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return new AdminDetailsServiceImpl();
+		return new PessoaDetailsServiceImpl();
 	}
 
 	@Bean
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				http.authorizeRequests()
 				.antMatchers("/error", "/login/**", "/js/**").permitAll()
                 .antMatchers("/css/**", "/image/**", "/webjars/**").permitAll()
-				.antMatchers("/consultas/**").hasRole("USER")
+				.antMatchers("/consultas/**").hasRole("CLIENTE")
 				.antMatchers("/profissionais/**", "/clientes/**").hasRole("ADMIN")
                 .antMatchers("/admins/**").hasRole("ADMIN")
 				.anyRequest().authenticated()

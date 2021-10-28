@@ -4,18 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import br.ufscar.dc.dsw.validation.UniqueCPF;
 
 @SuppressWarnings("serial")
-@MappedSuperclass
-public abstract class Pessoa<ID extends Serializable> implements Serializable {
+@Entity
+@Table(name = "Pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Pessoa<ID extends Serializable> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,9 +49,21 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	private String senha;
 	
     @NotBlank(message = "{NotBlank.pessoa.role}")
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private String role;
 
+    @Column(nullable = false)
+    private boolean enabled;
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+	
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 	public ID getId() {
 		return id;
 	}
@@ -91,7 +109,7 @@ public abstract class Pessoa<ID extends Serializable> implements Serializable {
 	}
 	
 	public void setRole(String role) {
-		this.role = role == "ADMIN" ? "ADMIN" : "USER";
+		this.role = role;
 	}
 	
 	@Override

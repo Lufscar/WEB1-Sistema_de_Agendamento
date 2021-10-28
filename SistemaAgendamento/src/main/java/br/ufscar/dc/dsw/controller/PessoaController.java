@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ufscar.dc.dsw.domain.Admin;
-import br.ufscar.dc.dsw.service.spec.IAdminService;
+import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.service.spec.IPessoaService;
 
 @Controller
 @RequestMapping("/admins")
-public class AdminController {
+public class PessoaController {
 	
 	@Autowired
-	private IAdminService service;
+	private IPessoaService service;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Admin admin) {
+	public String cadastrar(Pessoa admin) {
 		return "admin/cadastro";
 	}
 	
@@ -38,16 +38,16 @@ public class AdminController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid Admin admin, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastro";
 		}
 
-		System.out.println("password = " + admin.getSenha());
+		System.out.println("password = " + pessoa.getSenha());
 		
-		admin.setSenha(encoder.encode(admin.getSenha()));
-		service.salvar(admin);
+		pessoa.setSenha(encoder.encode(pessoa.getSenha()));
+		service.salvar(pessoa);
 		attr.addFlashAttribute("sucess", "Usuário inserido com sucesso.");
 		return "redirect:/admins/listar";
 	}
@@ -59,15 +59,15 @@ public class AdminController {
 	}
 	
 	@PostMapping("/editar")
-	public String editar(@Valid Admin admin, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			return "admin/cadastro";
 		}
 
-		System.out.println(admin.getSenha());
+		System.out.println(pessoa.getSenha());
 		
-		service.salvar(admin);
+		service.salvar(pessoa);
 		attr.addFlashAttribute("sucess", "Usuário editado com sucesso.");
 		return "redirect:/admins/listar";
 	}
