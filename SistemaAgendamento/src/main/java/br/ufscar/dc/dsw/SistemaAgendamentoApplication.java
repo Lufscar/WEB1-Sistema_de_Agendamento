@@ -16,10 +16,18 @@ public class SistemaAgendamentoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IClientesDAO clienteDAO, IProfissionaisDAO profissionalDAO,
+	public CommandLineRunner demo(IClientesDAO clienteDAO, IProfissionaisDAO profissionalDAO, IAdminDAO adminDAO,
 			IConsultasDAO consultaDAO) {
 		return (args) -> {
-
+			
+			Admin ad1 = new Admin();
+			ad1.setCpf("12332112344");
+			ad1.setNome("Cliente Generico");
+			ad1.setEmail("cli@cli.com");
+			ad1.setSenha("1234");
+			ad1.setRole("ADMIN");
+			adminDAO.save(ad1);
+			
 			Clientes c1 = new Clientes();
 			c1.setCpf("00000000000");
 			c1.setNome("Cliente Generico");
@@ -28,6 +36,7 @@ public class SistemaAgendamentoApplication {
 			c1.setSexo("n");
 			c1.setTelefone("11912345698");
 			c1.setNascimento("11/11/1990");
+			c1.setRole("USER");
 			clienteDAO.save(c1);
 
 			Clientes c2 = new Clientes();
@@ -38,6 +47,7 @@ public class SistemaAgendamentoApplication {
 			c2.setSexo("f");
 			c2.setTelefone("11912345698");
 			c2.setNascimento("11/11/1990");
+			c2.setRole("USER");
 			clienteDAO.save(c2);
 
 			Clientes c3 = new Clientes();
@@ -48,6 +58,7 @@ public class SistemaAgendamentoApplication {
 			c3.setSexo("m");
 			c3.setTelefone("11912345698");
 			c3.setNascimento("11/11/1990");
+			c3.setRole("USER");
 			clienteDAO.save(c3);
 
 			Clientes c4 = new Clientes();
@@ -58,6 +69,7 @@ public class SistemaAgendamentoApplication {
 			c4.setSexo("m");
 			c4.setTelefone("11912345698");
 			c4.setNascimento("11/11/1990");
+			c4.setRole("USER");
 			clienteDAO.save(c4);
 
 			Profissionais p1 = new Profissionais();
@@ -67,6 +79,7 @@ public class SistemaAgendamentoApplication {
 			p1.setSenha("1234");
 			p1.setArea("medicina");
 			p1.setEspecialidade("cardiologista");
+			p1.setRole("USER");
 			profissionalDAO.save(p1);
 
 			Profissionais p2 = new Profissionais();
@@ -76,6 +89,7 @@ public class SistemaAgendamentoApplication {
 			p2.setSenha("1234");
 			p2.setArea("medicina");
 			p2.setEspecialidade("psicologia");
+			p2.setRole("USER");
 			profissionalDAO.save(p2);
 
 			Profissionais p3 = new Profissionais();
@@ -85,6 +99,7 @@ public class SistemaAgendamentoApplication {
 			p3.setSenha("1234");
 			p3.setArea("engenharia");
 			p3.setEspecialidade("elétrica");
+			p3.setRole("USER");
 			profissionalDAO.save(p3);
 
 			Profissionais p4 = new Profissionais();
@@ -94,6 +109,7 @@ public class SistemaAgendamentoApplication {
 			p4.setSenha("1234");
 			p4.setArea("engenharia");
 			p4.setEspecialidade("mecânica");
+			p4.setRole("USER");
 			profissionalDAO.save(p4);
 
 			Consultas a1 = new Consultas();
