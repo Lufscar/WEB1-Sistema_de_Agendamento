@@ -14,9 +14,9 @@ public class AdminDetailsServiceImpl implements UserDetailsService {
     private IAdminDAO dao;
      
     @Override
-    public UserDetails loadUserByUsername(String username)
+    public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
-        Admin admin = dao.getUserByUsername(username);
+        Admin admin = dao.getUserByEmail(email);
          
         if (admin == null) {
             throw new UsernameNotFoundException("Could not find user");

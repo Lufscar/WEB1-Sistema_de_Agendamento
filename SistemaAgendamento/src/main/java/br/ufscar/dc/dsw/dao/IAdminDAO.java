@@ -19,6 +19,6 @@ public interface IAdminDAO extends CrudRepository<Admin, Long> {
 
 	void deleteById(Long id);
 	
-    @Query("SELECT u FROM Admin u WHERE u.email = :username")
-    public Admin getUserByUsername(@Param("username") String username);
+    @Query("SELECT u FROM Admin u WHERE u.email = :email")
+    public Admin getUserByEmail(@Param("email") String email);
 }

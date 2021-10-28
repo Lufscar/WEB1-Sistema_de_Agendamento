@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.dao.*;
 import br.ufscar.dc.dsw.domain.*;
@@ -16,7 +17,7 @@ public class SistemaAgendamentoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IClientesDAO clienteDAO, IProfissionaisDAO profissionalDAO, IAdminDAO adminDAO,
+	public CommandLineRunner demo(IClientesDAO clienteDAO, BCryptPasswordEncoder encoder, IProfissionaisDAO profissionalDAO, IAdminDAO adminDAO,
 			IConsultasDAO consultaDAO) {
 		return (args) -> {
 			
@@ -24,7 +25,7 @@ public class SistemaAgendamentoApplication {
 			ad1.setCpf("12332112344");
 			ad1.setNome("Cliente Generico");
 			ad1.setEmail("cli@cli.com");
-			ad1.setSenha("1234");
+			ad1.setSenha(encoder.encode("1234"));
 			ad1.setRole("ADMIN");
 			adminDAO.save(ad1);
 			
