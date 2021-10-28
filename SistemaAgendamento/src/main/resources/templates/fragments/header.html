@@ -9,12 +9,23 @@
 			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
+				
 					<div sec:authorize="isAuthenticated()" style="right: 10px; position: absolute">
 						<form th:action="@{/logout}" method="post">
 							<div class="row">
 								<div class="col-sm-12 col-sm-offset-3">
 									<input type="submit" name="login-submit" id="login-submit"
 										class="form-control btn btn-info" value="Logout">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div sec:authorize="!isAuthenticated()" style="right: 10px; position: absolute">
+						<form th:action="@{/login}" method="post">
+							<div class="row">
+								<div class="col-sm-12 col-sm-offset-3">
+									<input type="submit" name="login-submit" id="login-submit"
+										class="form-control btn btn-info" value="Login">
 								</div>
 							</div>
 						</form>
