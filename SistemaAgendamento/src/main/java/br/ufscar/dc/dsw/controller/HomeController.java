@@ -17,10 +17,6 @@ public class HomeController {
 	@Autowired
 	private IProfissionaisService service;
 	
-	public String home() {
-		return "inicio";
-	}
-	
 	private Pessoa getPessoa() {
 		PessoaDetails pessoaDetails = (PessoaDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return pessoaDetails.getPessoa();

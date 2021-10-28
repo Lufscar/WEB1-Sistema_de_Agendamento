@@ -12,10 +12,13 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span th:text="#{consulta.listar.label}"></span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/consultas/cadastrar}"
-					role="button"> <span class="oi oi-plus" title="Cadastro"
-					aria-hidden="true"></span> <span th:text="#{consulta.cadastrar.label}"></span>
-				</a>
+				
+				<div sec:authorize="hasRole('ROLE_CLIENTE')">
+					<a class="btn btn-primary btn-md" th:href="@{/consultas/cadastrar}"
+						role="button"> <span class="oi oi-plus" title="Cadastro"
+						aria-hidden="true"></span> <span th:text="#{consulta.cadastrar.label}"></span>
+					</a>
+				</div>
 			</div>
 		</nav>
 
@@ -31,7 +34,7 @@
 							<th th:text="#{consulta.profissional.label}"></th>
 							<th th:text="#{consulta.cliente.label}"></th>
 							<th th:text="#{consulta.dataehora.label}"></th>
-							<th th:text="#{consulta.acao.label}"></th>
+							<th th:text="#{acao.label}"></th>
 						</tr>
 					</thead>
 					<tbody>

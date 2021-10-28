@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.controller;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.ufscar.dc.dsw.domain.Consultas;
+import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.security.PessoaDetails;
 import br.ufscar.dc.dsw.service.spec.IConsultasService;
+import br.ufscar.dc.dsw.service.spec.IProfissionaisService;
 
 @Controller
 @RequestMapping("/consultas")
@@ -24,10 +28,17 @@ public class ConsultasController {
 	public String cadastrar(Consultas consulta) {
 		return "consulta/cadastro";
 	}
-
+	
+	private Pessoa getPessoa() {
+		PessoaDetails pessoaDetails = (PessoaDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return pessoaDetails.getPessoa();
+	}
+	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("consultas", service.buscarTodos());
+		if (this.getPessoa().getRole().equals("ROLE_PROFISSIONAL"))
+			model.addAttribute("consultas", service.buscarTodosPorUsuario(this.getPessoa()));
+		else model.addAttribute("consultas", service.buscarTodos());
 		return "consulta/lista";
 	}
 

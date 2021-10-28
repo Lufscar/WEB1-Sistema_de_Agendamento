@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import br.ufscar.dc.dsw.dao.IConsultasDAO;
 import br.ufscar.dc.dsw.domain.Consultas;
+import br.ufscar.dc.dsw.domain.Pessoa;
 import br.ufscar.dc.dsw.service.spec.IConsultasService;
 
 @Service
@@ -33,4 +34,8 @@ public class ConsultasService implements IConsultasService {
 		return dao.findAll();
 	}
 
+	@Transactional(readOnly = true)
+	public List<Consultas> buscarTodosPorUsuario(Pessoa u) {
+		return dao.findAllByProfissional(u);
+	}
 }
