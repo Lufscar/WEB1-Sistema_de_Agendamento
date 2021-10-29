@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw.service.impl;
 
+import java.io.Serializable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,4 +38,9 @@ public class ProfissionaisService implements IProfissionaisService {
     public boolean profissionalTemConsultas(Long id) {
         return !dao.findById(id.longValue()).getConsultas().isEmpty();
     }
+
+	@Override
+	public Profissionais buscarPorId(Serializable serializable) {
+		return dao.findById(serializable.);
+	}
 }

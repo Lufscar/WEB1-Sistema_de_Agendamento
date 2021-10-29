@@ -2,8 +2,11 @@ package br.ufscar.dc.dsw.dao;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+
+import br.ufscar.dc.dsw.domain.Clientes;
 import br.ufscar.dc.dsw.domain.Consultas;
 import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.domain.Profissionais;
 
 public interface IConsultasDAO extends CrudRepository<Consultas, Long> {
 	Consultas findById(long id);
@@ -14,5 +17,7 @@ public interface IConsultasDAO extends CrudRepository<Consultas, Long> {
 
 	void deleteById(Long id);
 	
-	List<Consultas> findAllByProfissional(Pessoa u);
+	List<Consultas> findAllByProfissional(Profissionais u);
+
+	List<Consultas> findAllByCliente(Clientes cli);
 }

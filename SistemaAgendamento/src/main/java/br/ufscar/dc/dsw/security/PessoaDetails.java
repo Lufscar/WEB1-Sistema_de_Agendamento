@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.domain.Profissionais;
  
 @SuppressWarnings("serial")
 public class PessoaDetails implements UserDetails {
@@ -18,6 +19,12 @@ public class PessoaDetails implements UserDetails {
         this.pessoa = pessoa;
     }
  
+    private Profissionais profissional;
+    
+    public PessoaDetails(Profissionais profissional) {
+        this.profissional = profissional;
+    }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(pessoa.getRole());
@@ -56,6 +63,10 @@ public class PessoaDetails implements UserDetails {
 
 	public Pessoa getPessoa() {
 		return pessoa;
+	}
+	
+	public Profissionais getProfissional() {
+		return profissional;
 	}
     
 }

@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import br.ufscar.dc.dsw.domain.Clientes;
 import br.ufscar.dc.dsw.domain.Consultas;
 import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.domain.Profissionais;
 import br.ufscar.dc.dsw.security.PessoaDetails;
+import br.ufscar.dc.dsw.service.spec.IClientesService;
 import br.ufscar.dc.dsw.service.spec.IConsultasService;
 import br.ufscar.dc.dsw.service.spec.IProfissionaisService;
 
@@ -24,6 +28,12 @@ public class ConsultasController {
 	@Autowired
 	private IConsultasService service;
 
+	@Autowired
+	private IProfissionaisService profservice;
+	
+	@Autowired
+	private IClientesService cliService;
+	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Consultas consulta) {
 		return "consulta/cadastro";
@@ -36,9 +46,20 @@ public class ConsultasController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		if (this.getPessoa().getRole().equals("ROLE_PROFISSIONAL"))
-			model.addAttribute("consultas", service.buscarTodosPorUsuario(this.getPessoa()));
-		else model.addAttribute("consultas", service.buscarTodos());
+		Pessoa useratual = this.getPessoa();
+		if (useratual.getRole().equals("ROLE_PROFISSIONAL")) {
+			Profissionais profi = profservice.buscarPorId((Long) this.getPessoa().getId());
+			model.addAttribute("consultas", service.buscarTodosPorProfissional(profi));
+		}
+		else if (useratual.getRole().equals("ROLE_CLIENTE")) {
+			Clientes cli = cliService.buscarPorId((Long) this.getPessoa().getId());
+			model.addAttribute("consultas", service.buscarTodosPorCliente(cli));
+		}{
+			model.addAttribute("consultas", service.buscarTodos());
+		}
+
+		
+		model.addAttribute("consultas", service.buscarTodos());
 		return "consulta/lista";
 	}
 

@@ -130,6 +130,7 @@ public class SistemaAgendamentoApplication {
 			a3.setCliente(c3);
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
+			
 		};
 	}
 }
