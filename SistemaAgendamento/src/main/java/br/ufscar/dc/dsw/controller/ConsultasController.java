@@ -59,8 +59,6 @@ public class ConsultasController {
 			model.addAttribute("consultas", service.buscarTodos());
 		}
 
-		
-		model.addAttribute("consultas", service.buscarTodos());
 		return "consulta/lista";
 	}
 
