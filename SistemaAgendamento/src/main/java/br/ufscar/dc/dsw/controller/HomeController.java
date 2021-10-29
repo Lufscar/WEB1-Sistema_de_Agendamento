@@ -32,7 +32,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/homecontroller/")
+	@GetMapping("/homecontroller")
 	public String listarhome(@RequestParam(value="area", required = false) String area, ModelMap model) {
 		model.addAttribute("profissionais", service.buscarPorArea(area));
 		return "home";
