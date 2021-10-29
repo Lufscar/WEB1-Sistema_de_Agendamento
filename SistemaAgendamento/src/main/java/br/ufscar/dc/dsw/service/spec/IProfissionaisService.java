@@ -15,4 +15,6 @@ public interface IProfissionaisService {
 	void excluir(Long id);
 
 	boolean profissionalTemConsultas(Long id);
+
+	List<Profissionais> buscarPorArea(String area);
 }

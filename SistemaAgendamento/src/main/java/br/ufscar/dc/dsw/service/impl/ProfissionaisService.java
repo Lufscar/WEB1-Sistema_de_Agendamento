@@ -39,8 +39,11 @@ public class ProfissionaisService implements IProfissionaisService {
         return !dao.findById(id.longValue()).getConsultas().isEmpty();
     }
 
-	@Override
-	public Profissionais buscarPorId(Serializable serializable) {
-		return dao.findById(serializable.);
+    @Transactional(readOnly = true)
+	public List<Profissionais> buscarPorArea(String area) {
+		if (area == null || area == "") {
+		return dao.findAll();
+		}
+		return dao.findByArea(area);
 	}
 }

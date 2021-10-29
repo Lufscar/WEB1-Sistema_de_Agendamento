@@ -14,4 +14,6 @@ public interface IProfissionaisDAO extends CrudRepository<Profissionais, Long> {
 	Profissionais save(Profissionais profissional);
 
 	void deleteById(Long id);
+
+	List<Profissionais> findByArea(String area);
 }
