@@ -54,7 +54,8 @@ public class ConsultasController {
 		else if (useratual.getRole().equals("ROLE_CLIENTE")) {
 			Clientes cli = cliService.buscarPorId((Long) this.getPessoa().getId());
 			model.addAttribute("consultas", service.buscarTodosPorCliente(cli));
-		}{
+		}
+		else {
 			model.addAttribute("consultas", service.buscarTodos());
 		}
 
