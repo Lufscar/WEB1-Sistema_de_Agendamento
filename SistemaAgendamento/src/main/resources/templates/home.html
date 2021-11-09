@@ -46,7 +46,7 @@
 		<div class="container" id="cadastro">
 			<form th:action="@{/homecontroller/}" th:object="${profissionais}" method="GET" >
 				<div class="form-row">
-						<input type="text" class="form-control" id="area" th:placeholder="#{profissional.area.label}"   /></br>
+						<input type="text" class="form-control" name="area" id="area" th:placeholder="#{profissional.area.label}"   /></br>
 				</div></br>
 				<button type="submit" th:text="#{button.salvar.label}" class="btn btn-primary btn-sm"></button>
 			</form>
