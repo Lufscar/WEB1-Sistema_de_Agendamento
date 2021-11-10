@@ -22,4 +22,10 @@ public interface IConsultasService {
 	List<Consultas> buscarTodosPorProfissional(Profissionais u);
 
 	List<Consultas> buscarTodosPorCliente(Clientes cli);
+
+
+	Consultas BuscarPorProfissionalEDataHora(Profissionais profissional, String dataHora);
+
+	Consultas BuscarPorClienteEDataHora(Clientes cliente, String dataHora);
+
 }

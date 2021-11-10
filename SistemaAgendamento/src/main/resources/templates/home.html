@@ -2,6 +2,8 @@
 <html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
+<!--  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/ajaxEstado.js}"></script>-->
 </head>
 <body>
 	<section class="layout-content" layout:fragment="corpo">
@@ -43,14 +45,44 @@
 		
 		
 		<br>
-		<div class="container" id="cadastro">
+		<div class="container" id="filtro">
 			<form th:action="@{/homecontroller/}" th:object="${profissionais}" method="GET" >
 				<div class="form-row">
 						<input type="text" class="form-control" name="area" id="area" th:placeholder="#{profissional.area.label}"   /></br>
-				</div></br>
+				</div></br> 
+				<!--  
+				<label th:text="#{profissional.area.label}" for="nome"></label> 
+				<select id="area" name="area"
+					class="form-control">
+					<c:forEach items="${areas}" var="area">
+						<option value="${area}"
+							th:text="${area}">
+						</option>
+					</c:forEach>
+				</select>
+				
+				<label th:text="#{profissional.especialidade.label}" for="nome"></label> 
+				<select id="especialidade" name="especialidade"
+					class="form-control">
+					<c:forEach items="${especialidades}" var="especialidade">
+						<option value="${especialidade}"
+							th:text="${especialidade}">
+						</option>
+					</c:forEach>
+				</select>
+				-->
 				<button type="submit" th:text="#{button.salvar.label}" class="btn btn-primary btn-sm"></button>
+				
 			</form>
+			
+			
+			
+			
+			
+			
 		</div>
+		
+		
 		
 	</section>
 </body>

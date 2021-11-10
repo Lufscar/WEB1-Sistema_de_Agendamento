@@ -1,5 +1,10 @@
 package br.ufscar.dc.dsw.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Pessoa;
+import br.ufscar.dc.dsw.domain.Profissionais;
 import br.ufscar.dc.dsw.security.PessoaDetails;
 import br.ufscar.dc.dsw.service.spec.IProfissionaisService;
 
@@ -23,6 +29,9 @@ public class HomeController {
 
 	@Autowired
 	private IProfissionaisService service;
+	
+	private List<String> areas;
+	private List<Profissionais> profissionais;
 	
 	private Pessoa getPessoa() {
 		PessoaDetails pessoaDetails = (PessoaDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -37,15 +46,32 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String listar(ModelMap model) {
-					
-		model.addAttribute("profissionais",service.buscarTodos());
+		
+		profissionais = service.buscarTodos();
+		/*
+		for (int i = 0; i < profissionais.size(); i++) {
+            areas.add(profissionais.get(i).getArea());
+        }
+		
+		for (Profissionais profissional : profissionais) {
+			areas.add(profissional.getArea());
+		}
+		//List<String> areasn = new ArrayList<>(new HashSet<>(areas));
+	
+		//Set<String> set = new HashSet<>(areas);
+		//areas.clear();
+		//areas.addAll(set);
+		*/
+		model.addAttribute("profissionais", profissionais);
+		model.addAttribute("areas", areas);
 		
 		return "home";
 	}
 	
 	@GetMapping("/homecontroller")
 	public String preEditar(@RequestParam String area, ModelMap model) {
-		model.addAttribute("profissionais", service.buscarPorArea(area));
+		profissionais = service.buscarPorArea(area);
+		model.addAttribute("profissionais", profissionais);
 		return "home";
 	}
 	

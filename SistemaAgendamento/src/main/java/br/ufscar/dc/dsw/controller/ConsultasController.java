@@ -70,9 +70,20 @@ public class ConsultasController {
 		if (result.hasErrors()) {
 			return "consulta/cadastro";
 		}
-
+		/*
+		//aqui tem q verificar se ja existe consulta daquele cliente/paciente no horario escolhido
+		if (!service.BuscarPorProfissionalEDataHora(consulta.getProfissional(), consulta.getDataHora()).equals(null)) {
+			//profissional tem consulta marcada para esse horário
+		}
+		else if (!service.BuscarPorClienteEDataHora(consulta.getCliente(), consulta.getDataHora()).equals(null)) {
+			//cliente já tem consulta marcada para esse horário
+		}
+		*/
+		
+		//else {
 		service.salvar(consulta);
-		attr.addFlashAttribute("sucess", "Consultas inserida com sucesso.");
+		attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
+		//}
 		return "redirect:/consultas/listar";
 	}
 

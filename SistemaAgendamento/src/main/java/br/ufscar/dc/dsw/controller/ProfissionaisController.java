@@ -55,7 +55,7 @@ public class ProfissionaisController {
 
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("profissional", service.buscarPorId(id));
+		model.addAttribute("profissionais", service.buscarPorId(id));
 		return "profissional/cadastro";
 	}
 

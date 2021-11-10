@@ -45,4 +45,18 @@ public class ConsultasService implements IConsultasService {
 	public List<Consultas> buscarTodosPorCliente(Clientes cli) {
 		return dao.findAllByCliente(cli);
 	}
+
+	
+	@Override
+	public Consultas BuscarPorProfissionalEDataHora(Profissionais profissional, String dataHora) {
+		// TODO Auto-generated method stub
+		return dao.findByProfissionalAndDataHora(profissional, dataHora);
+	}
+
+	@Override
+	public Consultas BuscarPorClienteEDataHora(Clientes cliente, String dataHora) {
+		// TODO Auto-generated method stub
+		return dao.findByClienteAndDataHora(cliente, dataHora);
+	}
+	
 }
