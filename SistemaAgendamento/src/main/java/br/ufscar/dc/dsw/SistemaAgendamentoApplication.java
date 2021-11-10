@@ -22,7 +22,7 @@ public class SistemaAgendamentoApplication {
 		return (args) -> {
 			
 			Pessoa ad1 = new Pessoa();
-			ad1.setCpf("12332112344");
+			ad1.setCpf("123.321.123-44");
 			ad1.setNome("Administrador");
 			ad1.setEmail("admin");
 			ad1.setSenha(encoder.encode("admin"));
@@ -30,7 +30,7 @@ public class SistemaAgendamentoApplication {
 			pessoaDAO.save(ad1);
 			
 			Clientes c1 = new Clientes();
-			c1.setCpf("11111111111");
+			c1.setCpf("111.111.111-11");
 			c1.setNome("Cliente Generico");
 			c1.setEmail("cli@cli.com");
 			c1.setSenha(encoder.encode("1234"));
@@ -41,7 +41,7 @@ public class SistemaAgendamentoApplication {
 			clienteDAO.save(c1);
 
 			Clientes c2 = new Clientes();
-			c2.setCpf("11122233344");
+			c2.setCpf("111.222.333-44");
 			c2.setNome("Luciana Souza");
 			c2.setEmail("luciana.souza@estudante.ufscar.br");
 			c2.setSenha(encoder.encode("1234"));
@@ -52,7 +52,7 @@ public class SistemaAgendamentoApplication {
 			clienteDAO.save(c2);
 
 			Clientes c3 = new Clientes();
-			c3.setCpf("22233344455");
+			c3.setCpf("222.333.444-55");
 			c3.setNome("Jean Araujo");
 			c3.setEmail("jean.araujo@estudante.ufscar.br");
 			c3.setSenha(encoder.encode("1234"));
@@ -63,7 +63,7 @@ public class SistemaAgendamentoApplication {
 			clienteDAO.save(c3);
 
 			Clientes c4 = new Clientes();
-			c4.setCpf("33344455566");
+			c4.setCpf("333.444.555-66");
 			c4.setNome("Anderson Henrique");
 			c4.setEmail("agiacomini@estudante.ufscar.br");
 			c4.setSenha(encoder.encode("1234"));
@@ -74,7 +74,7 @@ public class SistemaAgendamentoApplication {
 			clienteDAO.save(c4);
 
 			Profissionais p1 = new Profissionais();
-			p1.setCpf("91111111111");
+			p1.setCpf("911.111.111-11");
 			p1.setNome("Profissional Generico");
 			p1.setEmail("pro@pro.com");
 			p1.setSenha(encoder.encode("1234"));
@@ -84,7 +84,7 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p1);
 
 			Profissionais p2 = new Profissionais();
-			p2.setCpf("91122233344");
+			p2.setCpf("911.222.333-44");
 			p2.setNome("Luciana Souza");
 			p2.setEmail("luciana.souza@estudante.ufscar.br");
 			p2.setSenha(encoder.encode("1234"));
@@ -94,7 +94,7 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p2);
 
 			Profissionais p3 = new Profissionais();
-			p3.setCpf("92233344455");
+			p3.setCpf("922.333.444-55");
 			p3.setNome("Jean Araujo");
 			p3.setEmail("jean.araujo@estudante.ufscar.br");
 			p3.setSenha(encoder.encode("1234"));
@@ -104,7 +104,7 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p3);
 
 			Profissionais p4 = new Profissionais();
-			p4.setCpf("93344455566");
+			p4.setCpf("933.444.555-66");
 			p4.setNome("Anderson Henrique");
 			p4.setEmail("agiacomini@estudante.ufscar.br");
 			p4.setSenha(encoder.encode("1234"));

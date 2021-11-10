@@ -1,7 +1,6 @@
 package br.ufscar.dc.dsw.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -34,8 +31,8 @@ public class Pessoa<ID extends Serializable> implements Serializable {
 
 	@NotBlank(message = "{NotBlank.pessoa.cpf}")
 	@UniqueCPF(message = "{Unique.CPF}")
-	@Size(min = 11, max = 11, message = "{Size.CPF}")
-	@Column(nullable = false, length = 11)
+	@Size(min = 14, max = 14, message = "{Size.CPF}")
+	@Column(nullable = false, length = 14)
 	private String cpf;
 
 	@NotBlank(message = "{NotBlank.pessoa.email}")

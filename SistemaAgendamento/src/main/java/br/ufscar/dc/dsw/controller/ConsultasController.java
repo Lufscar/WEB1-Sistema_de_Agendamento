@@ -37,6 +37,7 @@ public class ConsultasController {
 	@GetMapping("/cadastrar")
 	public String cadastrar(ModelMap model) {
 		model.addAttribute("consultas", new Consultas());
+		model.addAttribute("profissionais", profservice.buscarTodos());
 		return "consulta/cadastro";
 	}
 	

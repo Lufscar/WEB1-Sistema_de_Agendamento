@@ -25,14 +25,41 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${consultas.id == null} ? @{/consultas/salvar} : @{/consultas/editar}"
+				th:action="@{/consultas/salvar}"
 				th:object="${consultas}" method="POST">
 
+				
 				<div class="form-row">
+				
+					<div class="form-group col-md-12">
+						<table class="table table-striped table-hover table-sm">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th th:text="#{profissional.nome.label}"></th>
+									<th th:text="#{profissional.area.label}"></th>
+									<th th:text="#{profissional.especialidade.label}"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="profissional : ${profissionais}">
+									<td>
+										<input type="radio" th:id="${profissional.id}" name="profissional" th:value="${profissional.id}" th:field="*{profissional}" required></td>
+									<td th:text="${profissional.nome}"></td>
+									<td th:text="${profissional.area}"></td>
+									<td th:text="${profissional.especialidade}"></td>
+									
+								</tr>
+							</tbody>
+						</table>
+						<div class="invalid-feedback">
+							<span th:errors="*{profissional}"></span>
+						</div>
+					</div>
 					<div class="form-group col-md-6">
 						<label th:text="#{consulta.dataehora.label}" for="nome"></label> 
 						<input type="text" class="form-control" id="dataHora" th:placeholder="#{consulta.dataehora.label}"
-							data-mask="00/00/0000 00:00" data-mask-reverse="true" th:field="*{dataHora}"
+							data-mask="00/00/0000 00:00" th:field="*{dataHora}"
 							th:classappend="${#fields.hasErrors('dataHora')} ? is-invalid" />
 						
 						<div class="invalid-feedback">
@@ -44,6 +71,10 @@
 				<input type="hidden" id="id" th:field="*{id}" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
+			
+
+			
+			
 		</div>
 	</section>
 </body>

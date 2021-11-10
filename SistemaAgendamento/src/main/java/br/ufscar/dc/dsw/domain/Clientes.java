@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 @Table(name = "Clientes")
 public class Clientes extends Pessoa<Long> {
 
-	@Size(max = 13)
-	@Column(length = 13)
+	@Size(min = 11, max = 12, message = "{Size.telefone}")
+	@Column(length = 12)
 	private String telefone;
 
 	@Size(max = 2)

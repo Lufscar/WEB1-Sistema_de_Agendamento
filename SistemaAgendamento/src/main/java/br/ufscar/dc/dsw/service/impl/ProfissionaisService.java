@@ -44,6 +44,6 @@ public class ProfissionaisService implements IProfissionaisService {
 		if (area == null || area == "") {
 		return dao.findAll();
 		}
-		return dao.getProfissionalByArea(area);
+		return dao.findByArea(area);
 	}
 }

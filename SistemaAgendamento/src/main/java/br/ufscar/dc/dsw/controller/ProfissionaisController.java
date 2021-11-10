@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ import br.ufscar.dc.dsw.service.spec.*;
 @RequestMapping("/profissionais")
 public class ProfissionaisController {
 
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@Autowired
 	private IProfissionaisService service;
 
@@ -43,7 +47,7 @@ public class ProfissionaisController {
 		if (result.hasErrors()) {
 			return "profissional/cadastro";
 		}
-
+		profissional.setSenha(encoder.encode(profissional.getSenha()));
 		service.salvar(profissional);
 		attr.addFlashAttribute("sucess", "Profissional inserido com sucesso.");
 		return "redirect:/profissionais/listar";

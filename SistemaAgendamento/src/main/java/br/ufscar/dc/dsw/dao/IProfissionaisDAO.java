@@ -18,10 +18,10 @@ public interface IProfissionaisDAO extends CrudRepository<Profissionais, Long> {
 	Profissionais save(Profissionais profissional);
 
 	void deleteById(Long id);
-
+/*
 	@Query("SELECT u FROM Profissionais u WHERE u.area = :area")
 	public List<Profissionais> getProfissionalByArea(@Param("area") String area);
-	/*
-	List<Profissionais> findByArea(String area);
 	*/
+	List<Profissionais> findByArea(String area);
+	
 }

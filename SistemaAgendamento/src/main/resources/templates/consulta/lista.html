@@ -31,28 +31,37 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th th:text="#{consulta.profissional.label}"></th>
 							<th th:text="#{consulta.cliente.label}"></th>
+							<div sec:authorize="hasRole('ROLE_PROFISSIONAL')">
+								<th th:text="#{cliente.telefone.label}"></th>
+								<th th:text="#{cliente.sexo.label}"></th>
+								<th th:text="#{cliente.nascimento.label}"></th>
+							</div>
+							<th th:text="#{consulta.profissional.label}"></th>
+							<div sec:authorize="hasRole('ROLE_CLIENTE')">
+								<th th:text="#{profissional.area.label}"></th>
+								<th th:text="#{profissional.especialidade.label}"></th>
+							</div>
 							<th th:text="#{consulta.dataehora.label}"></th>
-							<th th:text="#{acao.label}"></th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="consulta : ${consultas}">
 							<td th:text="${consulta.id}"></td>
-							<td th:text="${consulta.profissional}"></td>
-							<td th:text="${consulta.cliente}"></td>
-							<td th:datetime-local="${consulta.data_hora}"></td>
-							<td colspan="2"><a class="btn btn-info btn-sm"
-								th:href="@{/consultas/editar/{id} (id=${consulta.id}) }"
-								role="button"> <span class="oi oi-brush" th:title="#{link.editar.label}"
-									aria-hidden="true"> </span>
-							</a>
-								<button th:id="${'btn_consultas/excluir/' + consulta.id}"
-									type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-									data-target="#myModal">
-									<span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true"></span>
-								</button></td>
+							<td th:text="${consulta.cliente.nome}"></td>
+							<div sec:authorize="hasRole('ROLE_PROFISSIONAL')">
+								<td th:text="${consulta.cliente.telefone}"></td>
+								<td th:text="${consulta.cliente.sexo}"></td>
+								<td th:datetime-local="${consulta.cliente.nascimento}"></td>
+							</div>
+							<td th:text="${consulta.profissional.nome}"></td>
+							<div sec:authorize="hasRole('ROLE_CLIENTE')">
+								<th th:text="${consulta.profissional.area}"></th>
+								<th th:text="${consulta.profissional.especialidade}"></th>
+							</div>
+							<td th:datetime-local="${consulta.dataHora}"></td>
+							
 						</tr>
 					</tbody>
 				</table>
