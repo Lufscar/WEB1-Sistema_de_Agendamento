@@ -27,12 +27,12 @@ public class Consultas {
 	@Column(nullable = false, length = 16)
 	private String dataHora;
 
-	//@NotNull(message = "{NotNull.consulta.cliente}")
+	@NotNull(message = "{NotNull.consulta.cliente}")
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Clientes cliente;
 
-	//@NotNull(message = "{NotNull.consulta.profissional}")
+	@NotNull(message = "{NotNull.consulta.profissional}")
 	@ManyToOne
 	@JoinColumn(name = "profissional_id")
 	private Profissionais profissional;
