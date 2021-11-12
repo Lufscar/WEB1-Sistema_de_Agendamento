@@ -7,6 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.ufscar.dc.dsw.dao.*;
 import br.ufscar.dc.dsw.domain.*;
@@ -38,7 +42,7 @@ public class SistemaAgendamentoApplication {
 			c1.setSenha(encoder.encode("1234"));
 			c1.setSexo("n");
 			c1.setTelefone("11912345698");
-			c1.setNascimento("11/11/1990");
+			c1.setNascimento("1990-11-11");
 			c1.setRole("ROLE_CLIENTE");
 			clienteDAO.save(c1);
 
@@ -49,7 +53,7 @@ public class SistemaAgendamentoApplication {
 			c2.setSenha(encoder.encode("1234"));
 			c2.setSexo("f");
 			c2.setTelefone("11912345698");
-			c2.setNascimento("11/11/1990");
+			c2.setNascimento("1990-11-11");
 			c2.setRole("ROLE_CLIENTE");
 			clienteDAO.save(c2);
 
@@ -60,7 +64,7 @@ public class SistemaAgendamentoApplication {
 			c3.setSenha(encoder.encode("1234"));
 			c3.setSexo("m");
 			c3.setTelefone("11912345698");
-			c3.setNascimento("11/11/1990");
+			c3.setNascimento("1990-11-11");
 			c3.setRole("ROLE_CLIENTE");
 			clienteDAO.save(c3);
 
@@ -71,7 +75,7 @@ public class SistemaAgendamentoApplication {
 			c4.setSenha(encoder.encode("1234"));
 			c4.setSexo("m");
 			c4.setTelefone("11912345698");
-			c4.setNascimento("11/11/1990");
+			c4.setNascimento("1990-11-11");
 			c4.setRole("ROLE_CLIENTE");
 			clienteDAO.save(c4);
 
@@ -116,19 +120,19 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p4);
 
 			Consultas a1 = new Consultas();
-			a1.setDataHora("2022/02/10 14h");
+			a1.setDataHora("2022-02-10 14h");
 			a1.setCliente(c1);
 			a1.setProfissional(p2);
 			consultaDAO.save(a1);
 
 			Consultas a2 = new Consultas();
-			a2.setDataHora("2022/03/10 14h");
+			a2.setDataHora("2022-03-10 14h");
 			a2.setCliente(c2);
 			a2.setProfissional(p3);
 			consultaDAO.save(a2);
 
 			Consultas a3 = new Consultas();
-			a3.setDataHora("2022/04/10 14h");
+			a3.setDataHora("2022-04-10 14h");
 			a3.setCliente(c3);
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
@@ -158,5 +162,12 @@ public class SistemaAgendamentoApplication {
 			// Envio com anexo
 			//service.send(from, to, subject2, body2, new File("SIGA.pdf"));
 		};
+	}
+	
+	private ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+	    SpringTemplateEngine engine = new SpringTemplateEngine();
+	    engine.addDialect(new Java8TimeDialect());
+	    engine.setTemplateResolver(templateResolver);
+	    return engine;
 	}
 }
