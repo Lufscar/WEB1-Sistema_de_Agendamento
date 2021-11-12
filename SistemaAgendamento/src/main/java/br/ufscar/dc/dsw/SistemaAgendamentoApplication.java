@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw;
 
+import javax.mail.internet.InternetAddress;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -131,6 +133,30 @@ public class SistemaAgendamentoApplication {
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
 			
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner run(EmailService service) {
+		return (args) -> {
+			
+			InternetAddress from = new InternetAddress("trab.web.ufscar@gmail.com", "Equipe de Atendimento");
+		    InternetAddress to = new InternetAddress("trab.web.ufscar@gmail.com", "Cliente");
+					
+			String subject1 = "Dados da Sua Consulta - Web1 Sistema de Agendamento";
+			String body1 = "Olá,\n"
+					+ "Sua consulta foi marcada com sucesso!\n"
+					+ "O link de acesso é: https://meet.google.com/keq-xpus-jen \n "
+					+ "Acesse o seu login em nossa plataforma para consultar a data e horário!\n\n"
+					+ "Atenciosamente,\n"
+					+ "Equipe de Atendimento do Sistema de Agendamento de Consultas";
+			
+
+			// Envio sem anexo
+			service.send(from, to, subject1, body1);
+			
+			// Envio com anexo
+			//service.send(from, to, subject2, body2, new File("SIGA.pdf"));
 		};
 	}
 }
