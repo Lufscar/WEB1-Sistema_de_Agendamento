@@ -44,8 +44,8 @@ public class SistemaAgendamentoApplication {
 
 			Clientes c2 = new Clientes();
 			c2.setCpf("111.222.333-44");
-			c2.setNome("Luciana Souza");
-			c2.setEmail("luciana.souza@estudante.ufscar.br");
+			c2.setNome("Luciana Souza Cliente");
+			c2.setEmail("luciana.souza@estudante.ufscar.br.cliente");
 			c2.setSenha(encoder.encode("1234"));
 			c2.setSexo("f");
 			c2.setTelefone("11912345698");
@@ -55,8 +55,8 @@ public class SistemaAgendamentoApplication {
 
 			Clientes c3 = new Clientes();
 			c3.setCpf("222.333.444-55");
-			c3.setNome("Jean Araujo");
-			c3.setEmail("jean.araujo@estudante.ufscar.br");
+			c3.setNome("Jean Araujo Cliente");
+			c3.setEmail("jean.araujo@estudante.ufscar.br.cliente");
 			c3.setSenha(encoder.encode("1234"));
 			c3.setSexo("m");
 			c3.setTelefone("11912345698");
@@ -66,8 +66,8 @@ public class SistemaAgendamentoApplication {
 
 			Clientes c4 = new Clientes();
 			c4.setCpf("333.444.555-66");
-			c4.setNome("Anderson Henrique");
-			c4.setEmail("agiacomini@estudante.ufscar.br");
+			c4.setNome("Anderson Henrique Cliente");
+			c4.setEmail("agiacomini@estudante.ufscar.br.cliente");
 			c4.setSenha(encoder.encode("1234"));
 			c4.setSexo("m");
 			c4.setTelefone("11912345698");

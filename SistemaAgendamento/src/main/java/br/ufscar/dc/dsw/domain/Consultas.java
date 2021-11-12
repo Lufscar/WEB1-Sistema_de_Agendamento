@@ -23,8 +23,8 @@ public class Consultas {
 	private Long id;
 
 	@NotBlank(message = "{NotBlank.consulta.data_hora}")
-	@Size(max = 16)
-	@Column(nullable = false, length = 16)
+	@Size(max = 18)
+	@Column(nullable = false, length = 18)
 	private String dataHora;
 
 	@NotNull(message = "{NotNull.consulta.cliente}")

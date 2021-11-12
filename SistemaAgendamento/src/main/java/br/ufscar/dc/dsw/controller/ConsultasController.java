@@ -36,7 +36,11 @@ public class ConsultasController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(ModelMap model) {
-		model.addAttribute("consultas", new Consultas());
+		Consultas consultas = new Consultas();
+		Clientes  cli = cliService.buscarPorId((Long) getPessoa().getId());
+		consultas.setCliente(cli);
+		model.addAttribute("consultas", consultas);
+		
 		model.addAttribute("profissionais", profservice.buscarTodos());
 		return "consulta/cadastro";
 	}
@@ -74,6 +78,7 @@ public class ConsultasController {
 		Clientes cli = cliService.buscarPorId((Long) p.getId());
 		consulta.setCliente(cli);
 		
+		/*
 		//aqui tem q verificar se ja existe consulta daquele cliente/paciente no horario escolhido
 		if (!service.BuscarPorProfissionalEDataHora(consulta.getProfissional(), consulta.getDataHora()).equals(null)) {
 			//profissional tem consulta marcada para esse horário
@@ -84,10 +89,13 @@ public class ConsultasController {
 			attr.addFlashAttribute("fail", "Cliente com horario indisponível.");
 		}
 		
+		
 		else {
+		*/
+		
 		service.salvar(consulta);
 		attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
-		}
+		//}
 		return "redirect:/consultas/listar";
 	}
 
