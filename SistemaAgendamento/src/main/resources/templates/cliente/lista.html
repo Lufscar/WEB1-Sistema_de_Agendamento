@@ -45,7 +45,7 @@
 							<td th:text="${cliente.email}"></td>
 							<td th:text="${cliente.telefone}"></td>
 							<td th:text="${cliente.sexo}"></td>
-							<td th:datetime-local="${cliente.nascimento}"></td>
+							<td th:text="${cliente.nascimento}"></td>
 							<td colspan="2"><a class="btn btn-info btn-sm"
 								th:href="@{/clientes/editar/{id} (id=${cliente.id}) }"
 								role="button"> <span class="oi oi-brush" th:title="#{link.editar.label}"

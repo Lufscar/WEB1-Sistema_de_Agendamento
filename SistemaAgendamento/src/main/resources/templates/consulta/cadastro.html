@@ -57,10 +57,10 @@
 						</div>
 					</div>
 					<div class="form-group col-md-6">
+						
 						<label th:text="#{consulta.dataehora.label}" for="nome"></label> 
-						<input type="text" class="form-control" id="dataHora" th:placeholder="#{consulta.dataehora.label}"
-							data-mask="00/00/0000 00h" th:field="*{dataHora}"
-							th:classappend="${#fields.hasErrors('dataHora')} ? is-invalid" />
+						<input type="datetime-local" id="dataHora" name="dataHora">
+						
 						
 						<div class="invalid-feedback">
 							<span th:errors="*{dataHora}"></span>

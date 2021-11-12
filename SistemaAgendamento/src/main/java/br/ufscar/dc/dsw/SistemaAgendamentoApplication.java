@@ -114,19 +114,19 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p4);
 
 			Consultas a1 = new Consultas();
-			a1.setDataHora("10/02/2022 14:00");
+			a1.setDataHora("2022/02/10 14h");
 			a1.setCliente(c1);
 			a1.setProfissional(p2);
 			consultaDAO.save(a1);
 
 			Consultas a2 = new Consultas();
-			a2.setDataHora("11/07/2022 11:00");
+			a2.setDataHora("2022/03/10 14h");
 			a2.setCliente(c2);
 			a2.setProfissional(p3);
 			consultaDAO.save(a2);
 
 			Consultas a3 = new Consultas();
-			a3.setDataHora("11/07/2022 11:00");
+			a3.setDataHora("2022/04/10 14h");
 			a3.setCliente(c3);
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
