@@ -84,6 +84,15 @@ public class ConsultasController {
 			attr.addFlashAttribute("fail", "O horário deve ser 'inteiro' hh:00. Tente Novamente!");
 		} else
 		*/
+		String zero = consulta.getDataHora();
+		
+		if ( !(zero.endsWith("00")) ) {
+			attr.addFlashAttribute("fail", "Só é possível marcar horário com hora cheia (minutos zerados)!");
+			return "redirect:/consultas/listar";
+		}
+		
+		
+		
 		if (HorarioDisponivel(consulta)) {
 			service.salvar(consulta);
 			attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
@@ -135,14 +144,5 @@ public class ConsultasController {
 		return true;
 	}
 	
-	private boolean HorarioInteiro(Consultas consulta) {
-		
-		String d = consulta.getDataHora();
-		Integer tam = d.length();
-		d.toCharArray();
-		for (int i = (tam-1); i > (tam-3); i--) {
-			if( d.charAt(i) != '0') { return false; } else {return true;}
-		}
-		return true;
-	}
+	
 }
