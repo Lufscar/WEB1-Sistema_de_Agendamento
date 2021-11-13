@@ -49,7 +49,7 @@ public class SistemaAgendamentoApplication {
 			Clientes c2 = new Clientes();
 			c2.setCpf("111.222.333-44");
 			c2.setNome("Luciana Souza Cliente");
-			c2.setEmail("luciana.souza@estudante.ufscar.br.cliente");
+			c2.setEmail("luciana.losg@gmail.com");
 			c2.setSenha(encoder.encode("1234"));
 			c2.setSexo("f");
 			c2.setTelefone("11912345698");
@@ -60,7 +60,7 @@ public class SistemaAgendamentoApplication {
 			Clientes c3 = new Clientes();
 			c3.setCpf("222.333.444-55");
 			c3.setNome("Jean Araujo Cliente");
-			c3.setEmail("jean.araujo@estudante.ufscar.br.cliente");
+			c3.setEmail("jean.araujo2008@hotmail.com");
 			c3.setSenha(encoder.encode("1234"));
 			c3.setSexo("m");
 			c3.setTelefone("11912345698");
@@ -71,7 +71,7 @@ public class SistemaAgendamentoApplication {
 			Clientes c4 = new Clientes();
 			c4.setCpf("333.444.555-66");
 			c4.setNome("Anderson Henrique Cliente");
-			c4.setEmail("agiacomini@estudante.ufscar.br.cliente");
+			c4.setEmail("trab.web.ufscar@gmail.com");
 			c4.setSenha(encoder.encode("1234"));
 			c4.setSexo("m");
 			c4.setTelefone("11912345698");
@@ -120,19 +120,19 @@ public class SistemaAgendamentoApplication {
 			profissionalDAO.save(p4);
 
 			Consultas a1 = new Consultas();
-			a1.setDataHora("2022-02-10 14h");
+			a1.setDataHora("2022-02-10T14:00");
 			a1.setCliente(c1);
 			a1.setProfissional(p2);
 			consultaDAO.save(a1);
 
 			Consultas a2 = new Consultas();
-			a2.setDataHora("2022-03-10 14h");
+			a2.setDataHora("2022-03-10T15:00");
 			a2.setCliente(c2);
 			a2.setProfissional(p3);
 			consultaDAO.save(a2);
 
 			Consultas a3 = new Consultas();
-			a3.setDataHora("2022-04-10 14h");
+			a3.setDataHora("2022-04-10T16:00");
 			a3.setCliente(c3);
 			a3.setProfissional(p1);
 			consultaDAO.save(a3);
