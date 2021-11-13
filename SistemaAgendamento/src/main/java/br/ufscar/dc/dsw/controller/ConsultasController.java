@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -78,24 +80,18 @@ public class ConsultasController {
 		Clientes cli = cliService.buscarPorId((Long) p.getId());
 		consulta.setCliente(cli);
 		
-		/*
-		//aqui tem q verificar se ja existe consulta daquele cliente/paciente no horario escolhido
-		if (!service.BuscarPorProfissionalEDataHora(consulta.getProfissional(), consulta.getDataHora()).equals(null)) {
-			//profissional tem consulta marcada para esse horário
-			attr.addFlashAttribute("fail", "Profissional com horario indisponível.");
-		}
-		else if (!service.BuscarPorClienteEDataHora(consulta.getCliente(), consulta.getDataHora()).equals(null)) {
-			//cliente já tem consulta marcada para esse horário
-			attr.addFlashAttribute("fail", "Cliente com horario indisponível.");
-		}
-		
-		
-		else {
+		/*if (!HorarioInteiro(consulta)){
+			attr.addFlashAttribute("fail", "O horário deve ser 'inteiro' hh:00. Tente Novamente!");
+		} else
 		*/
+		if (HorarioDisponivel(consulta)) {
+			service.salvar(consulta);
+			attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
+		} else {
+			//cliente ou profissional já tem consulta marcada para esse horário
+			attr.addFlashAttribute("fail", "Este horario está indisponível. Tente Novamente!");
+		}
 		
-		service.salvar(consulta);
-		attr.addFlashAttribute("sucess", "Consulta inserida com sucesso.");
-		//}
 		return "redirect:/consultas/listar";
 	}
 
@@ -122,5 +118,31 @@ public class ConsultasController {
 		service.excluir(id);
 		model.addAttribute("sucess", "Consulta excluída com sucesso.");
 		return listar(model);
+	}
+	
+	private boolean HorarioDisponivel(Consultas consulta) {
+		
+		List<Consultas> consultas = service.buscarTodosPorProfissional(consulta.getProfissional());
+		for (int i = 0; i < consultas.size(); i++) {
+			if (consultas.get(i).getDataHora().equals(consulta.getDataHora())) { return false; }
+		}
+		
+		consultas = service.buscarTodosPorCliente(consulta.getCliente());
+		for (int i = 0; i < consultas.size(); i++) {
+			if (consultas.get(i).getDataHora().equals(consulta.getDataHora())) { return false; }
+		}
+		
+		return true;
+	}
+	
+	private boolean HorarioInteiro(Consultas consulta) {
+		
+		String d = consulta.getDataHora();
+		Integer tam = d.length();
+		d.toCharArray();
+		for (int i = (tam-1); i > (tam-3); i--) {
+			if( d.charAt(i) != '0') { return false; } else {return true;}
+		}
+		return true;
 	}
 }
